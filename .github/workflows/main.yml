@@ -1,0 +1,13 @@
+name: Web Api Build App
+on:[push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: Build DotNET35
+        run: |
+           cd "C:\Users\idans\source\repos\WebAppGitTest\MSBuild\Current\Bin\"
+           .\MSBuild.exe $Env:idansu07\WebappGitTest
