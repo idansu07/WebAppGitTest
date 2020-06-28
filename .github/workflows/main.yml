@@ -1,25 +1,13 @@
-name: "build-test-dev"
-on:
-  push:
-    branches:
-      - dev
-    paths-ignore:
-      - '*.md'
+name: Web Api Build App
+on:[push]
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Setup MSBuild
-      id: setup_msbuild
-      uses: ./
-      with:
-        vs-version: "[16.4,16.6]"
-
-    - name: echo msbuild path
-      run: echo "${{ steps.setup_msbuild.outputs.msbuildPath }}"
-
-    - name: echo MSBuild
-      run: msbuild -version
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: Build DotNET35
+        run: |
+           cd "C:\Users\idans\source\repos\WebAppGitTest\MSBuild\Current\Bin\"
+           .\MSBuild.exe $Env:idansu07\WebappGitTest
